@@ -1,0 +1,3 @@
+{
+  "extends": "@gridmaker/config/tsconfig.base.json"
+}

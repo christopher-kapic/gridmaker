@@ -1,0 +1,16 @@
+{
+  "name": "@gridmaker/env",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {},
+  "dependencies": {
+    "@t3-oss/env-core": "^0.13.1",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@gridmaker/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
