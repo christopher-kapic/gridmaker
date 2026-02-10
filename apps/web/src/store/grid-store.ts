@@ -414,10 +414,10 @@ export const useGridStore = create<GridState>((set, get) => ({
       }
       lines.push("");
     }
-    lines.push("## JSON (for import)");
-    lines.push("```json");
-    lines.push(s.toJson());
-    lines.push("```");
+    // lines.push("## JSON (for import)");
+    // lines.push("```json");
+    // lines.push(s.toJson());
+    // lines.push("```");
     return lines.join("\n");
   },
 }));
