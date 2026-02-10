@@ -142,7 +142,7 @@ export default function GridMakerApp() {
             {/* Grid builder area - constrained width; mobile in narrow strip (4-col phone-like) */}
             <div
               className={cn(
-                "max-w-full",
+                "max-w-full transition-[width] duration-200 ease-in-out",
                 viewport !== "mobile" && widthClass,
                 viewport === "mobile" && "mx-auto w-full max-w-[375px]"
               )}
