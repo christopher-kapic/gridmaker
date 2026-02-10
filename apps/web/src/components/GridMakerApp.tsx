@@ -15,6 +15,8 @@ import GridBuilder from "./GridBuilder";
 import ElementsSidebar from "./ElementsSidebar";
 import CopyButton from "./CopyButton";
 import ImportDialog from "./ImportDialog";
+import { ModeToggle } from "./ModeToggle";
+import { ThemeProvider } from "./theme-provider";
 
 const VIEWPORTS: { value: Viewport; label: string }[] = [
   { value: "desktop", label: "Desktop" },
@@ -62,29 +64,31 @@ export default function GridMakerApp() {
   );
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div className="flex min-h-screen flex-col">
-        {/* App bar: viewport tabs centered, Copy right */}
-      <header className="border-border flex h-14 shrink-0 items-center justify-between gap-4 border-b px-4">
-        <div className="w-20 shrink-0" />
-        <Tabs
-          value={viewport}
-          onValueChange={(v) => setViewport(v as Viewport)}
-          className="flex-1 max-w-2xl"
-        >
-          <TabsList className="bg-muted grid w-full grid-cols-3">
-            {VIEWPORTS.map(({ value, label }) => (
-              <TabsTrigger key={value} value={value}>
-                {label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-        </Tabs>
-        <div className="flex shrink-0 justify-end gap-2">
-          <ImportDialog />
-          <CopyButton />
-        </div>
-      </header>
+    <ThemeProvider>
+      <DndProvider backend={HTML5Backend}>
+        <div className="flex min-h-screen flex-col">
+          {/* App bar: viewport tabs centered, Copy right */}
+          <header className="border-border flex h-14 shrink-0 items-center justify-between gap-4 border-b px-4">
+            <div className="w-20 shrink-0" />
+            <Tabs
+              value={viewport}
+              onValueChange={(v) => setViewport(v as Viewport)}
+              className="flex-1 max-w-2xl"
+            >
+              <TabsList className="bg-muted grid w-full grid-cols-3">
+                {VIEWPORTS.map(({ value, label }) => (
+                  <TabsTrigger key={value} value={value}>
+                    {label}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
+            <div className="flex shrink-0 justify-end gap-2">
+              <ModeToggle />
+              <ImportDialog />
+              <CopyButton />
+            </div>
+          </header>
 
       {/* Main: 12-col grid - sidebar left, content right */}
       <main className="flex flex-1 flex-col gap-6 p-6 lg:px-8">
@@ -148,7 +152,8 @@ export default function GridMakerApp() {
           </section>
         </div>
       </main>
-    </div>
-    </DndProvider>
+        </div>
+      </DndProvider>
+    </ThemeProvider>
   );
 }
